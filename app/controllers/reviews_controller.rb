@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
-  #before_action :set_review, only: [:show, :update, :destroy]
+  before_action :set_review, only: [:show, :update, :destroy]
+
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordInvalid, with: :handle_baddata
 
   # GET /reviews
   def index
@@ -15,13 +18,8 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
-
-    if @review.save
-      render json: @review, status: :created, location: @review
-    else
-      render json: @review.errors, status: :unprocessable_entity
-    end
+    review = Review.create!(review_params)
+    render json: review, status: :created
   end
 
   # PATCH/PUT /reviews/1
@@ -39,6 +37,16 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+    def handle_baddata(invalid)
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+    
+    def render_not_found
+        render json: { error: "NOT FOUND"}, status: :not_found
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])

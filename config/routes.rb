@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  # resources :reviews
+  resources :reviews
   # resources :products
-  # resources :users
+  #resources :users
 
   get '/users', to: 'users#index'
 
