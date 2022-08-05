@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import ProductCard from './ProductCard'
-import ProductPageCard from './ProductPageCard'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import ProductCard from './ProductCard';
 
 function Shop({getOneProduct}) {
     const [data, setData] = useState([])
@@ -12,7 +12,11 @@ function Shop({getOneProduct}) {
     function getData() {
         fetch('/products')
             .then(res => res.json())
-            .then(res => setData(res))
+            .then(res => {
+                if(res.length > 0){
+                    setData(res)
+                }
+            })
     }
 
     const productCard = data.map((item) => {

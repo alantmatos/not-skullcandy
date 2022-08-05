@@ -6,7 +6,6 @@ function ProductCard({ product, getOneProduct, productId }) {
     let history = useHistory()
 
     function productClick(e) {
-        console.log(e)
         getOneProduct(e)
         history.push(`/products/${productId}`)
     }

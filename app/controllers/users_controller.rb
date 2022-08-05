@@ -20,14 +20,11 @@ class UsersController < ApplicationController
     render json: @current_user
   end
 
-  private
-
-  def user_params
-    params.permit(:username, :password)
-  end
-
-  
 private
+
+def user_params
+  params.permit(:username, :password)
+end
 
 def handle_baddata(invalid)
 render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
