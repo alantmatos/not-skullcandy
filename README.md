@@ -75,14 +75,19 @@ Not SkullCandy is powered by:
 
 
 <!-- CONTACT -->
-## Contact
+## Developed by:
 
 Alan 
 * https://courageous-alpaca-aca2e9.netlify.app/ - Portfolio
 * https://www.linkedin.com/in/alantmatos/ -  Linkedin
 * https://github.com/alantmatos - GitHub
 
-Project Link: 
+
+Bach
+* https://bachle.netlify.app/ - Porfolio
+* https://www.linkedin.com/in/bachhoangle/ - Linkedin
+* https://github.com/bachdumpling - GitHub
+
 
 
 
